@@ -63,6 +63,9 @@ export const metadata: Metadata = {
       "강남 가라오케 간판을 단 정통 하이엔드 룸. 정찰 주대와 거짓 없는 초이스 시스템, 담당 실장 직영 안내.",
     images: ["/og-cover.jpg"],
   },
+  verification: {
+    google: "rD3o6pagtY2xrkEcz61cYgXugg2B5h_LJ-KbIEYT5TY",
+  },
   robots: {
     index: true,
     follow: true,

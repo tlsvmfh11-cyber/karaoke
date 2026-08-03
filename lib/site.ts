@@ -1,4 +1,4 @@
-export const SITE_URL = "https://www.gangnam-jungjik-karaoke.com";
+export const SITE_URL = "https://gnamkaraoke.com";
 
 export const SITE_NAME = "강남 가라오케 정직한 실장";
 

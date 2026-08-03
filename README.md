@@ -28,7 +28,8 @@ npm run build   # 프로덕션 빌드
 - 본문 문맥형 내부 링크(페이지당 3회 이상)
 - `next/font` (Noto Serif KR + Noto Sans KR)
 
-## 배포 전 수정할 것
+## 운영 정보
 
-- `lib/site.ts` 의 `SITE_URL` 을 실제 도메인으로 교체 (canonical / sitemap / JSON-LD 에 일괄 반영됨)
+- 도메인: https://gnamkaraoke.com (`lib/site.ts` 의 `SITE_URL` — canonical / sitemap / JSON-LD 일괄 반영)
+- Google Search Console 인증 메타 태그 적용 완료 (`app/layout.tsx` → `verification.google`)
 - 전화번호는 `lib/site.ts` 의 `PHONE_TEL` 한 곳에서 관리 (화면에는 숫자 미노출)
