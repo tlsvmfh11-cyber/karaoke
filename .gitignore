@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+
+# source images (originals) - optimized webp copies live in public/images
+/*.png
+
+.claude/
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts

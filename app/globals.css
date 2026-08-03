@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-obsidian text-ivory antialiased;
+    background-image: radial-gradient(
+        1100px 500px at 50% -10%,
+        rgba(228, 197, 128, 0.07),
+        transparent 70%
+      ),
+      radial-gradient(
+        900px 600px at 100% 110%,
+        rgba(142, 42, 60, 0.09),
+        transparent 65%
+      );
+  }
+
+  ::selection {
+    @apply bg-champagne/30 text-ivory;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-obsidian-line;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-champagne-dim;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-obsidian-line/80 bg-obsidian-card/70 bg-card-sheen shadow-glass backdrop-blur-md;
+  }
+
+  .gold-text {
+    @apply bg-gradient-to-r from-champagne-bright via-champagne to-champagne-deep bg-clip-text text-transparent;
+    filter: drop-shadow(0 0 22px rgba(228, 197, 128, 0.3));
+  }
+
+  .gold-divider {
+    @apply relative h-px w-full bg-gold-line;
+  }
+
+  .gold-divider::after {
+    content: "◈";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0.9rem;
+    background-color: #0b0a10;
+    color: #b9944e;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .prose-room p {
+    @apply mb-5 leading-[1.95] text-ivory-dim;
+  }
+
+  /* ── Editorial decoration layer (typography only, no content change) ── */
+
+  article {
+    counter-reset: roomsec;
+  }
+
+  .prose-room h2 {
+    counter-increment: roomsec;
+    position: relative;
+    padding-top: 3.4rem;
+  }
+
+  .prose-room h2::before {
+    content: "0" counter(roomsec);
+    position: absolute;
+    top: 0;
+    left: -0.15rem;
+    font-family: var(--font-serif);
+    font-size: 4.75rem;
+    line-height: 1;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(228, 197, 128, 0.3);
+    letter-spacing: 0.04em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .prose-room h2::after {
+    content: "";
+    display: block;
+    margin-top: 1.1rem;
+    height: 2px;
+    width: 84px;
+    background: linear-gradient(
+      90deg,
+      #e4c580,
+      rgba(142, 42, 60, 0.9) 70%,
+      transparent
+    );
+    border-radius: 2px;
+  }
+
+  .prose-room h2 + p {
+    font-size: 1.0625em;
+    color: #e6e0d2;
+  }
+
+  .prose-room h3:not(.glass-card *) {
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  .prose-room h3:not(.glass-card *)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.32em;
+    bottom: 0.32em;
+    width: 3px;
+    border-radius: 99px;
+    background: linear-gradient(180deg, #f3dca6, #8e2a3c);
+    box-shadow: 0 0 14px rgba(228, 197, 128, 0.4);
+  }
+
+  .prose-room h4 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.05rem;
+    border: 1px solid rgba(228, 197, 128, 0.25);
+    border-radius: 0.75rem;
+    background: linear-gradient(
+      135deg,
+      rgba(228, 197, 128, 0.1),
+      rgba(142, 42, 60, 0.08)
+    );
+  }
+
+  .prose-room h4::before {
+    content: "◆";
+    font-size: 0.6em;
+    color: #b9944e;
+    transform: translateY(-1px);
+  }
+
+  .prose-room strong {
+    @apply font-semibold text-champagne;
+    padding: 0 0.15em;
+    border-radius: 3px;
+    background: linear-gradient(
+      to top,
+      rgba(228, 197, 128, 0.16) 0%,
+      rgba(228, 197, 128, 0.16) 34%,
+      transparent 34%
+    );
+  }
+
+  .prose-room em {
+    @apply not-italic text-ivory;
+    border-bottom: 1px dashed rgba(228, 197, 128, 0.45);
+    padding-bottom: 1px;
+  }
+
+  .prose-room ul {
+    @apply mb-6 space-y-2.5 pl-1;
+  }
+
+  .prose-room ul > li {
+    @apply relative pl-6 leading-relaxed text-ivory-dim;
+  }
+
+  .prose-room ul > li::before {
+    content: "";
+    @apply absolute left-0 top-[0.7em] h-1.5 w-1.5 rotate-45 bg-champagne-deep;
+  }
+
+  .prose-room a {
+    @apply font-medium text-champagne underline decoration-champagne-dim/60 underline-offset-4 transition-colors hover:text-champagne-bright hover:decoration-champagne;
+  }
+}
