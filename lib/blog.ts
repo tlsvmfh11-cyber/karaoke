@@ -1,7 +1,6 @@
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h3"; text: string }
-  | { type: "img"; src: string; alt: string }
   | { type: "list"; items: string[] }
   | { type: "tip"; text: string };
 
@@ -18,7 +17,6 @@ export interface BlogPost {
   date: string;
   dateLabel: string;
   readMinutes: number;
-  image: string;
   tag: string;
   intro: string;
   sections: BlogSection[];
@@ -34,7 +32,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-05",
     dateLabel: "2026년 8월 5일",
     readMinutes: 7,
-    image: "/images/gangnam-karaoke-visit-lounge.webp",
     tag: "첫 방문",
     intro:
       "15년 동안 이 일을 하면서 첫 방문 손님을 수천 분 모셨습니다. 그분들이 공통적으로 하시는 말씀이 있습니다. '미리 알고 왔으면 안 어색했을 텐데.' 그래서 이 글을 씁니다. 예약 전화를 거는 순간부터 대리운전을 타고 귀가하시는 순간까지, 처음 오시는 분이 알아 두면 좋은 것들을 순서대로 적었습니다.",
@@ -45,11 +42,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "처음 오시는 분들이 가장 많이 하시는 실수가 '가서 이야기하죠'입니다. 현장에서 정하기 시작하면 손님이 불리해집니다. 전화에서 확정해야 할 것은 세 가지입니다. **총액 견적, 오늘 라인업, 룸 가능 여부.** 이 세 가지를 명확하게 답하지 못하는 집이라면 방문을 다시 생각해 보시는 편이 좋습니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-reservation-consult.webp",
-            alt: "강남 가라오케 예약 상담 — 방문 전 전화로 총액 견적을 확정하는 절차",
           },
           {
             type: "h3",
@@ -85,11 +77,6 @@ export const BLOG_POSTS: BlogPost[] = [
             text: "파트너들이 룸에 입장해 인사를 하면 손님이 직접 지목하시는 방식입니다. 처음이면 누구를 골라야 할지 몰라 첫 판에서 대충 정하는 분들이 많은데, 그러실 필요 없습니다. 마음에 드는 분이 없으면 다음 판을 요청하시면 되고, 그것이 재초이스입니다. 저희 같은 정찰제 업장에서는 재초이스에 횟수 제한이나 추가 비용이 없습니다. 자리 성격(접대, 지인 모임, 혼자 조용히)을 실장에게 말해 주시면 그날 라인업 중에서 후보를 추려 드리는 것도 방법입니다.",
           },
           {
-            type: "img",
-            src: "/images/gangnam-karaoke-room-assign.webp",
-            alt: "강남 가라오케 첫 방문 룸 배정 — 예약 성함 확인 후 대기 없이 안내되는 전용 룸",
-          },
-          {
             type: "p",
             text: "본 자리가 시작되면 그냥 편하게 노시면 됩니다. 얼음·음료 리필은 호출벨을 누르면 전담 웨이터가 처리하고, 노래방 기기 조작이 어려우면 파트너가 다 해 줍니다. 첫 방문에서 어색함은 보통 20분이면 사라집니다.",
           },
@@ -123,7 +110,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-07",
     dateLabel: "2026년 8월 7일",
     readMinutes: 6,
-    image: "/images/gangnam-karaoke-judae-whisky-set.webp",
     tag: "비용 상식",
     intro:
       "견적 전화에서 손님이 용어를 모르면 대화가 한쪽으로 기웁니다. '주대 얼마예요?'라고 물으셨는데 업장이 주대만 싸게 부르고 나머지를 현장에서 붙이면, 손님은 속은 것도 모르고 계산하게 됩니다. 용어를 아는 것이 방어의 시작입니다. 계산서에 나올 수 있는 항목을 하나씩 풀어 드립니다.",
@@ -138,11 +124,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "주대는 글자 그대로는 술값이지만, 실무에서는 **양주 1병 + 기본 안주 + 음료·얼음 세팅**을 묶은 세트 가격을 뜻합니다. 그래서 같은 '주대 OO만 원'이라도 세트에 뭐가 포함되는지에 따라 실질 가격이 다릅니다. 견적을 비교하실 때는 주대에 맥주·음료·과일 안주가 포함되는지, 아니면 별도인지부터 확인하셔야 합니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-judae-whisky-set.webp",
-            alt: "강남 가라오케 주대 세팅 — 양주와 기본 안주, 음료가 포함된 표준 세트 구성",
           },
           {
             type: "h3",
@@ -168,11 +149,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "용어를 알았으니 이제 실전입니다. 여러 집 견적을 비교하실 때 '주대 얼마'로 물으시면 반드시 실패합니다. 주대를 미끼로 싸게 부르고 TC·룸티·봉사료에서 회수하는 구조가 이 바닥의 오래된 수법이기 때문입니다. 올바른 질문은 하나입니다. **'인원 O명, O시간 기준으로 나갈 때 총 얼마입니까?'**",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-price-jungchal.webp",
-            alt: "강남 가라오케 정찰 주대 — 항목별 쪼개기 없이 총액으로 고지하는 가격표",
           },
           {
             type: "list",
@@ -203,7 +179,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-09",
     dateLabel: "2026년 8월 9일",
     readMinutes: 6,
-    image: "/images/gangnam-room-salon-whisky-lounge.webp",
     tag: "업종 비교",
     intro:
       "강남 밤거리의 간판은 손님을 위해 존재하지 않습니다. 가라오케라고 쓰여 있는데 들어가 보면 하이엔드 룸이고, 룸싸롱 간판인데 실제로는 다른 시스템인 경우가 흔합니다. 간판 대신 시스템으로 업종을 구분하는 법을 알려 드립니다. 어디를 가시든, 최소한 뭘 보고 골라야 하는지는 알고 고르셔야 합니다.",
@@ -218,11 +193,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "강남에서 '가라오케'는 노래 기기가 있는 룸 업장을 넓게 부르는 말입니다. 그 안에는 정통 하이엔드 룸부터 가벼운 노래주점까지 스펙트럼이 다 들어 있습니다. 그래서 가라오케 간판을 보고 시스템을 예단하면 안 됩니다. 저희처럼 간판은 가라오케지만 내용은 정통 하이엔드 룸으로 운영하는 곳도 많습니다. 구분 기준은 간판이 아니라 **초이스 방식, 주대 구조, 라인업 규모**입니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-highend-vip-room.webp",
-            alt: "강남 가라오케 하이엔드 VIP 룸 — 간판은 가라오케, 시스템은 정통 룸",
           },
           {
             type: "h3",
@@ -259,11 +229,6 @@ export const BLOG_POSTS: BlogPost[] = [
             ],
           },
           {
-            type: "img",
-            src: "/images/gangnam-karaoke-night-lounge.webp",
-            alt: "강남 밤 상권 라운지 — 자리 목적에 따라 달라지는 업종 선택",
-          },
-          {
             type: "tip",
             text: "어느 업종이든 견적 전화에서 총액을 확정해 주는지, 라인업을 과장 없이 말하는지 — 이 두 가지는 공통 기준입니다. 업종보다 업장의 정직함이 그날 자리를 결정합니다.",
           },
@@ -280,7 +245,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-11",
     dateLabel: "2026년 8월 11일",
     readMinutes: 7,
-    image: "/images/gangnam-highend-room-partner.webp",
     tag: "접대 노하우",
     intro:
       "접대 자리를 잡으시는 분은 그날 밤 두 가지 일을 동시에 하십니다. 손님을 모시는 일과, 자리가 매끄럽게 돌아가게 만드는 일. 후자를 업장에 맡길 수 있어야 전자에 집중하실 수 있습니다. 15년 동안 접대 자리를 셀 수 없이 치러 본 실장 입장에서, 성공하는 접대 자리의 공통점을 순서대로 적습니다.",
@@ -299,11 +263,6 @@ export const BLOG_POSTS: BlogPost[] = [
               "모시는 분 성향 — 조용한 대화형인지, 노래와 분위기를 즐기시는지. 파트너 추천의 기준이 됩니다.",
               "예산 상한 — 상한을 말해 두시면 연장·추가 제안 자체가 그 안에서만 나옵니다. 계산서 걱정 없이 자리에 집중하실 수 있습니다.",
             ],
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-room-system-setting.webp",
-            alt: "강남 가라오케 접대 자리 사전 세팅 — 예약 시점에 맞춰 준비된 룸",
           },
           {
             type: "tip",
@@ -325,11 +284,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "자리 중에는 호스트가 술을 제일 적게 드셔야 합니다. 잔은 채우되 페이스는 지키십시오. 시간 관리도 호스트의 일입니다만, 좋은 업장이라면 실장이 마감 전에 미리 남은 시간을 고지하니 그 신호에 맞춰 자리를 정리하시면 됩니다. 연장 여부는 모시는 분의 컨디션을 보고 판단하시되, 무리한 연장보다 깔끔한 마무리가 대부분 좋은 인상을 남깁니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-highend-room-partner.webp",
-            alt: "강남 가라오케 접대 자리 — 대화 중심으로 자리를 받치는 하이엔드 룸 파트너",
           },
           {
             type: "h3",
@@ -356,7 +310,6 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-13",
     dateLabel: "2026년 8월 13일",
     readMinutes: 5,
-    image: "/images/gangnam-karaoke-system-stage.webp",
     tag: "이용 팁",
     intro:
       "같은 집, 같은 술, 같은 인원인데 어떤 날은 만족스럽고 어떤 날은 아쉽습니다. 손님들은 보통 라인업 탓을 하시지만, 실장 입장에서 보면 절반은 시간대 선택의 문제입니다. 1부와 2부가 뭐가 다른지, 언제 가는 것이 유리한지 — 업장 입장에서 알고 있는 그대로 적습니다.",
@@ -367,11 +320,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "통상 저녁 초저녁부터 자정 무렵까지를 1부, 자정 이후 새벽까지를 2부라고 부릅니다. 그런데 이 구분의 본질은 시계가 아니라 **그 시간대에 업장이 돌아가는 방식**입니다. 1부는 첫 자리 손님 중심이라 룸 여유가 있고 라인업 전원이 출근해 있는 시간입니다. 2부는 자리를 옮겨 오시는 손님이 몰리면서 룸과 라인업의 회전이 빨라지는 시간입니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-lineup-bar.webp",
-            alt: "강남 가라오케 시간대별 라인업 — 1부와 2부에 따라 달라지는 출근부 흐름",
           },
           {
             type: "list",
@@ -397,11 +345,6 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             type: "p",
             text: "많은 업장이 1부와 2부의 주대를 다르게 운영합니다. 문제는 이 차이를 전화에서 미리 말해 주지 않는 집입니다. 1부 가격으로 견적을 듣고 2부에 도착하면 현장에서 금액이 달라지는 식입니다. 그래서 견적 전화에서는 반드시 **방문 예정 시각을 먼저 말씀하시고** 그 시간 기준 총액을 받으셔야 합니다.",
-          },
-          {
-            type: "img",
-            src: "/images/gangnam-karaoke-faq-room.webp",
-            alt: "강남 가라오케 시간대별 견적 안내 — 방문 시각 기준으로 확정되는 총액",
           },
           {
             type: "p",

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { BookOpenText, CalendarDays, Clock3, ArrowRight } from "lucide-react";
 import { CallButton } from "@/components/call-button";
 import { FadeUp, HeroReveal, StaggerGroup, StaggerItem } from "@/components/motion";
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
     description:
       "첫 방문 절차, 비용 용어, 업종 비교, 접대 노하우, 시간대 선택까지 실무 그대로 쓴 가이드 모음.",
     url: "/blog",
-    images: ["/images/gangnam-karaoke-visit-lounge.webp"],
   },
 };
 
@@ -36,7 +34,6 @@ const blogListJsonLd = {
     headline: post.title,
     url: `${SITE_URL}/blog/${post.slug}`,
     datePublished: post.date,
-    image: `${SITE_URL}${post.image}`,
   })),
 };
 
@@ -88,42 +85,39 @@ export default function BlogPage() {
         <FadeUp>
           <Link
             href={`/blog/${featured.slug}`}
-            className="glass-card group grid overflow-hidden md:grid-cols-[1.2fr_1fr]"
+            className="glass-card group relative block overflow-hidden p-8 md:p-12"
           >
-            <div className="relative aspect-[16/9] overflow-hidden md:aspect-auto md:min-h-[280px]">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 560px"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent"
-              />
-            </div>
-            <div className="flex flex-col justify-center p-8 md:p-10">
-              <span className="inline-flex w-fit rounded-full bg-champagne/10 px-3 py-1 text-xs font-semibold text-champagne">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gold-line opacity-60"
+            />
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex rounded-full bg-champagne/10 px-3 py-1 text-xs font-semibold text-champagne">
+                최신 글
+              </span>
+              <span className="inline-flex rounded-full border border-champagne-dim/40 px-3 py-1 text-xs font-medium text-champagne-dim">
                 {featured.tag}
               </span>
-              <h2 className="mt-4 font-serif text-xl font-bold leading-snug text-ivory transition-colors group-hover:text-champagne-bright md:text-2xl">
-                {featured.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-ivory-faint">
-                {featured.description}
-              </p>
-              <div className="mt-5 flex items-center gap-4 text-xs text-ivory-faint">
-                <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                  {featured.dateLabel}
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock3 className="h-3.5 w-3.5" aria-hidden />
-                  {featured.readMinutes}분 읽기
-                </span>
-              </div>
+            </div>
+            <h2 className="mt-5 max-w-3xl font-serif text-2xl font-bold leading-snug text-ivory transition-colors group-hover:text-champagne-bright md:text-3xl">
+              {featured.title}
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-[1.9] text-ivory-faint md:text-base">
+              {featured.description}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-5 text-xs text-ivory-faint">
+              <span className="inline-flex items-center gap-1.5">
+                <CalendarDays className="h-3.5 w-3.5" aria-hidden />
+                {featured.dateLabel}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Clock3 className="h-3.5 w-3.5" aria-hidden />
+                {featured.readMinutes}분 읽기
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-semibold text-champagne transition-transform group-hover:translate-x-1">
+                전문 읽기
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+              </span>
             </div>
           </Link>
         </FadeUp>
@@ -133,47 +127,32 @@ export default function BlogPage() {
             <StaggerItem key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="glass-card group flex h-full flex-col overflow-hidden"
+                className="glass-card group flex h-full flex-col p-7 md:p-8"
               >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 480px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-obsidian/80 px-3 py-1 text-xs font-semibold text-champagne backdrop-blur">
-                    {post.tag}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <h2 className="font-serif text-lg font-bold leading-snug text-ivory transition-colors group-hover:text-champagne-bright">
-                    {post.title}
-                  </h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory-faint">
-                    {post.description}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between text-xs text-ivory-faint">
-                    <div className="flex items-center gap-4">
-                      <span className="inline-flex items-center gap-1.5">
-                        <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                        {post.dateLabel}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5">
-                        <Clock3 className="h-3.5 w-3.5" aria-hidden />
-                        {post.readMinutes}분
-                      </span>
-                    </div>
-                    <ArrowRight
-                      className="h-4 w-4 text-champagne-dim transition-transform group-hover:translate-x-1 group-hover:text-champagne"
-                      aria-hidden
-                    />
+                <span className="inline-flex w-fit rounded-full bg-champagne/10 px-3 py-1 text-xs font-semibold text-champagne">
+                  {post.tag}
+                </span>
+                <h2 className="mt-4 font-serif text-lg font-bold leading-snug text-ivory transition-colors group-hover:text-champagne-bright md:text-xl">
+                  {post.title}
+                </h2>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory-faint">
+                  {post.description}
+                </p>
+                <div className="mt-5 flex items-center justify-between text-xs text-ivory-faint">
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center gap-1.5">
+                      <CalendarDays className="h-3.5 w-3.5" aria-hidden />
+                      {post.dateLabel}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock3 className="h-3.5 w-3.5" aria-hidden />
+                      {post.readMinutes}분
+                    </span>
                   </div>
+                  <ArrowRight
+                    className="h-4 w-4 text-champagne-dim transition-transform group-hover:translate-x-1 group-hover:text-champagne"
+                    aria-hidden
+                  />
                 </div>
               </Link>
             </StaggerItem>

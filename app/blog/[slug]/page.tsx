@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3, Lightbulb } from "lucide-react";
 import { CallButton } from "@/components/call-button";
 import { FadeUp, HeroReveal } from "@/components/motion";
-import { Photo } from "@/components/photo";
 import { breadcrumbJsonLd, SITE_URL } from "@/lib/site";
 import { BLOG_POSTS, getPost, type BlogBlock } from "@/lib/blog";
 
@@ -29,7 +28,6 @@ export function generateMetadata({
       title: post.title,
       description: post.description,
       url: `/blog/${post.slug}`,
-      images: [post.image],
       publishedTime: post.date,
     },
   };
@@ -50,12 +48,6 @@ function Block({ block }: { block: BlogBlock }) {
         <h3 className="mb-4 mt-12 font-serif text-xl font-bold text-champagne md:text-2xl">
           {block.text}
         </h3>
-      );
-    case "img":
-      return (
-        <div className="my-9">
-          <Photo src={block.src} alt={block.alt} />
-        </div>
       );
     case "list":
       return (
@@ -99,7 +91,6 @@ export default function BlogPostPage({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: [`${SITE_URL}${post.image}`],
     author: {
       "@type": "Person",
       name: "담당 실장",
@@ -161,10 +152,6 @@ export default function BlogPostPage({
               {post.intro}
             </p>
           </HeroReveal>
-
-          <FadeUp className="mt-12">
-            <Photo src={post.image} alt={post.title} priority />
-          </FadeUp>
         </div>
       </section>
 
