@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { href: "/", label: "정직한 소개" },
   { href: "/system", label: "시스템 안내" },
   { href: "/price", label: "주대 정찰표" },
+  { href: "/blog", label: "이용 가이드" },
   { href: "/contact", label: "예약 상담" },
 ] as const;
 
