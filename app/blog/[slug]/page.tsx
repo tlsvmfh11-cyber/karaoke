@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3, Lightbulb } from "lucide-react";
@@ -29,14 +30,39 @@ export function generateMetadata({
       description: post.description,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
+      images: ["/og-cover.jpg"],
     },
   };
 }
 
 function renderInline(text: string) {
-  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
-    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
-  );
+  const pattern = /\*\*(.+?)\*\*|\[(.+?)\]\((.+?)\)/g;
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = pattern.exec(text))) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+    if (match[1] !== undefined) {
+      nodes.push(<strong key={key++}>{match[1]}</strong>);
+    } else {
+      nodes.push(
+        <Link
+          key={key++}
+          href={match[3]}
+          className="font-semibold text-champagne underline underline-offset-4 transition-colors hover:text-champagne-bright"
+        >
+          {match[2]}
+        </Link>
+      );
+    }
+    lastIndex = pattern.lastIndex;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
 }
 
 function Block({ block }: { block: BlogBlock }) {
@@ -85,12 +111,16 @@ export default function BlogPostPage({
   const index = BLOG_POSTS.findIndex((p) => p.slug === post.slug);
   const prev = BLOG_POSTS[index - 1];
   const next = BLOG_POSTS[index + 1];
+  const related = post.related
+    .map((slug) => getPost(slug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   const postJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    image: [`${SITE_URL}/og-cover.jpg`],
     author: {
       "@type": "Person",
       name: "담당 실장",
@@ -171,6 +201,34 @@ export default function BlogPostPage({
             </section>
           </div>
         ))}
+
+        {related.length > 0 && (
+          <FadeUp className="mt-16">
+            <h2 className="mb-6 font-serif text-xl font-bold leading-snug text-ivory md:text-2xl">
+              함께 읽으면 좋은 가이드
+            </h2>
+            <div className="grid gap-4 md:grid-cols-3">
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/blog/${r.slug}`}
+                  className="glass-card group flex h-full flex-col p-6"
+                >
+                  <span className="inline-flex w-fit rounded-full bg-champagne/10 px-3 py-1 text-xs font-semibold text-champagne">
+                    {r.tag}
+                  </span>
+                  <p className="mt-4 flex-1 text-sm font-bold leading-snug text-ivory transition-colors group-hover:text-champagne-bright">
+                    {r.title}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-champagne-dim transition-transform group-hover:translate-x-1 group-hover:text-champagne">
+                    읽어보기
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </FadeUp>
+        )}
 
         <FadeUp className="mt-16">
           <div className="glass-card flex flex-col items-center gap-6 p-10 text-center md:p-14">

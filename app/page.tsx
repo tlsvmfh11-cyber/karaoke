@@ -355,7 +355,11 @@ export default function HomePage() {
               겁니다. 저희가 이 기준을 어떻게 통과하는지는 직접 전화로
               확인해 보시는 게 가장 빠릅니다. 예약 절차와 상담 시 준비하실
               내용은 <Link href="/contact">예약 상담 페이지</Link>에 따로
-              정리해 두었습니다.
+              정리해 두었고, 첫 방문이 처음부터 끝까지 어떻게 진행되는지는{" "}
+              <Link href="/blog/first-visit-guide">
+                첫 방문 가이드
+              </Link>
+              에서 순서대로 확인하실 수 있습니다.
             </p>
           </FadeUp>
 
@@ -372,7 +376,11 @@ export default function HomePage() {
               한 마디만 귀띔해 주시면, 나머지는 제가 준비합니다. 이런 목적별
               운영 방식의 세부 내용 역시{" "}
               <Link href="/system">시스템 안내</Link>에서 이어서 보실 수
-              있습니다.
+              있습니다. 접대 자리를 실패 없이 준비하는 법은{" "}
+              <Link href="/blog/business-hosting-tips">
+                접대 자리 성공 공식
+              </Link>
+              에 실전 순서로 따로 정리해 두었습니다.
             </p>
             <div className="my-9">
               <Photo

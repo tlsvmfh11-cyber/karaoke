@@ -190,7 +190,11 @@ export default function SystemPage() {
               끌어올리는 파트너가 자리를 살립니다. 어떤 기준으로 고르셔야 할지
               애매하면 제게 물어보십시오. 그날 출근한 라인업을 가장 잘 아는
               사람이 저이니, 자리 성격만 말씀해 주시면 후보를 추려
-              드리겠습니다.
+              드리겠습니다. 초이스 자리에서 지켜 주시면 좋은 매너는{" "}
+              <Link href="/blog/etiquette-manners-guide">
+                초이스 매너·팁 문화 가이드
+              </Link>
+              에 정리해 두었습니다.
             </p>
           </FadeUp>
         </section>
@@ -235,7 +239,11 @@ export default function SystemPage() {
               시간대별 요금이 어떻게 다른지 — 이른바 1부와 2부의 구분, 각
               시간대의 주대 차이 — 는 <Link href="/price">주대 정찰표</Link>에
               표로 정리해 두었습니다. 시간대를 잘 고르시는 것만으로도 같은
-              예산에서 자리의 질이 달라집니다.
+              예산에서 자리의 질이 달라지며, 자세한 요령은{" "}
+              <Link href="/blog/time-slot-guide">
+                1부·2부 완전 정리
+              </Link>
+              에서 확인하실 수 있습니다.
             </p>
           </FadeUp>
 

@@ -159,7 +159,11 @@ export default function ContactPage() {
               위 세 가지를 문자로 남겨 주십시오. 확인 즉시 총액과 룸 상황을
               회신드립니다. 다만 금·토 피크 시간대에는 문자보다 전화가
               확실합니다. 룸이 실시간으로 빠지는 날은 몇 분 차이로 배정이
-              갈리기 때문입니다.
+              갈리기 때문입니다. 처음 예약해 보시는 분이라면{" "}
+              <Link href="/blog/first-visit-guide">
+                첫 방문 가이드
+              </Link>
+              를 먼저 읽으시면 전화가 훨씬 편해집니다.
             </p>
           </FadeUp>
         </section>
@@ -219,7 +223,12 @@ export default function ContactPage() {
               이유는 단순합니다. 조용히 오가시는 것을 선호하는 손님이
               대부분이고, 저희 역시 그 프라이버시를 지키는 쪽을 택했기
               때문입니다. 차량은 건물 발렛이 바로 받아 처리하며 주차비는
-              받지 않습니다.
+              받지 않습니다. 강남역·신논현·논현·역삼 권역별 접근성 차이가
+              궁금하시면{" "}
+              <Link href="/blog/gangnam-station-area-guide">
+                지역별 완전 가이드
+              </Link>
+              를 참고하십시오.
             </p>
             <p>
               마감 후에는 대리운전 연결까지 저희가 처리합니다. 새벽 시간대
@@ -250,7 +259,12 @@ export default function ContactPage() {
               모른다고, 안 되는 것은 안 된다고 답하는 것까지가 저희
               상담입니다. 처음 방문이라 전체 구조가 궁금하시다면{" "}
               <Link href="/">소개 페이지</Link>부터 읽고 오시는 것도
-              좋습니다.
+              좋습니다. 단체 회식이나 법인 접대라면 인원별 예약 타이밍과
+              세금계산서 처리 요령을{" "}
+              <Link href="/blog/group-company-dinner-guide">
+                단체 회식·법인 접대 예약 가이드
+              </Link>
+              에서 먼저 확인하시길 권합니다.
             </p>
             <div className="my-9">
               <Photo

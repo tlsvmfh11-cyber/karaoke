@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description:
       "첫 방문 절차, 비용 용어, 업종 비교, 접대 노하우, 시간대 선택까지 실무 그대로 쓴 가이드 모음.",
     url: "/blog",
+    images: ["/og-cover.jpg"],
   },
 };
 
