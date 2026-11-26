@@ -92,6 +92,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${serif.variable} ${sans.variable}`}>
       <body className="font-sans">
+        <script src="/shatamilo.js" async />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSONLD) }}
